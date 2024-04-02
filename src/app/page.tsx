@@ -1,7 +1,23 @@
-const Home = () => {
+"use client";
+
+import { FC } from "react";
+import { UploadButton } from "@/utils/uploadthing";
+
+const Home: FC = () => {
 	return (
 		<main>
-			<h1>Home</h1>
+			<UploadButton
+				endpoint="imageUploader"
+				onClientUploadComplete={(res) => {
+					// Do something with the response
+					console.log("Files: ", res);
+					alert("Upload Completed");
+				}}
+				onUploadError={(error: Error) => {
+					// Do something with the error.
+					alert(`ERROR! ${error.message}`);
+				}}
+			/>
 		</main>
 	);
 };
